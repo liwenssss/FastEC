@@ -7,7 +7,7 @@ import com.joanzapata.iconify.IconFontDescriptor;
  * Created by liWensheng on 2018/1/20.
  */
 
-public class FontModule implements IconFontDescriptor {
+public class FontEcModule implements IconFontDescriptor {
     @Override
     public String ttfFileName() {
         return "iconfont.ttf";

@@ -39,8 +39,10 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:27.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
-    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
-    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
     testCompile 'junit:junit:4.12'
     compile project(':latte-annotations')
+
+    //字体图标
+    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
 }
