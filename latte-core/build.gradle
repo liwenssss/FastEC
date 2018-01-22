@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 27
@@ -45,4 +47,12 @@ dependencies {
     //字体图标
     compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
     compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
+
+    // fragment
+    compile 'me.yokeyword:fragmentation:1.2.4'
+    compile 'me.yokeyword:fragmentation-swipeback:1.2.4'
+
+    // butterknife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
