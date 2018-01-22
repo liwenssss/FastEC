@@ -26,8 +26,13 @@ public abstract class ProxyActivity extends SupportActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initContainer(savedInstanceState);
     }
 
+    /**
+     * init container
+     * @param savedInstanceState
+     */
     private void initContainer(@Nullable Bundle savedInstanceState) {
         final ContentFrameLayout container = new ContentFrameLayout(this);
         container.setId(R.id.delegate_container);

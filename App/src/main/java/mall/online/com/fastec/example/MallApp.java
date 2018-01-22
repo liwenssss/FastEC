@@ -11,7 +11,7 @@ import mall.online.com.latte.ec.icon.FontEcModule;
  * Created by liWensheng on 2018/1/21.
  */
 
-public class ExampleApp extends Application {
+public class MallApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
