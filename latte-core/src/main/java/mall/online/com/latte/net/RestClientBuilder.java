@@ -70,7 +70,5 @@ public class RestClientBuilder {
 
     public final RestClient build() {
         return new RestClient(mUrl, PARAMS, mIRequest, mISuccess, mIFailure, mIError, mBody);
-
     }
-
 }

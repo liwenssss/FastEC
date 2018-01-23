@@ -1,6 +1,7 @@
 package mall.online.com.latte.net;
 
 import java.util.Map;
+import java.util.WeakHashMap;
 
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
@@ -25,22 +26,22 @@ import retrofit2.http.Url;
 public interface RestService {
 
     @GET
-    Call<String> get(@Url String url, @QueryMap Map<String, Object> parms);
+    Call<String> get(@Url String url, @QueryMap WeakHashMap<String, Object> parms);
 
     @FormUrlEncoded
     @POST
-    Call<String> post(@Url String url, @FieldMap Map<String, Object> parms);
+    Call<String> post(@Url String url, @FieldMap WeakHashMap<String, Object> parms);
 
     @FormUrlEncoded
     @PUT
-    Call<String> put(@Url String url, @FieldMap Map<String, Object> parms);
+    Call<String> put(@Url String url, @FieldMap WeakHashMap<String, Object> parms);
 
     @DELETE
-    Call<String> delete(@Url String url, @QueryMap Map<String, Object> parms);
+    Call<String> delete(@Url String url, @QueryMap WeakHashMap<String, Object> parms);
 
     @Streaming
     @GET
-    Call<ResponseBody> download(@Url String url, @QueryMap Map<String, Object> parms);
+    Call<ResponseBody> download(@Url String url, @QueryMap WeakHashMap<String, Object> parms);
 
     @Multipart
     @POST

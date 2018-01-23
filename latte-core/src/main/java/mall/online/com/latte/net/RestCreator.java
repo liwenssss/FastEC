@@ -16,6 +16,9 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RestCreator {
 
+    /**
+     * 参数容器
+     */
     private static final class ParamsHolder {
         public static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
     }
@@ -26,18 +29,10 @@ public class RestCreator {
 
 
     /**
-     * 创造方法，提供rest服务
-     * @return
-     */
-    public static RestService getRestService() {
-        return RestServiceHolder.REST_SERVICE;
-    }
-
-    /**
      * 初始化retrofit实例
      */
     private static final class RetrofitHolder {
-        private static final String BASE_URL = (String)Latte.getConfigurations().get(ConfigType.API_HOST);
+        private static final String BASE_URL = (String)Latte.getConfigurations().get(ConfigType.API_HOST.name());
         private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(OKHttpHolder.OK_HTTP_CLIENT)
@@ -63,5 +58,9 @@ public class RestCreator {
     private static final class RestServiceHolder{
         private static final RestService REST_SERVICE =
                 RetrofitHolder.RETROFIT_CLIENT.create(RestService.class);
+    }
+
+    public static RestService getRestService() {
+        return RestServiceHolder.REST_SERVICE;
     }
 }

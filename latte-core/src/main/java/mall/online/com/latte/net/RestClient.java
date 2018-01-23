@@ -8,7 +8,10 @@ import mall.online.com.latte.net.callback.IError;
 import mall.online.com.latte.net.callback.IFailure;
 import mall.online.com.latte.net.callback.IRequest;
 import mall.online.com.latte.net.callback.ISuccess;
+import mall.online.com.latte.net.callback.RequestCallbacks;
 import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
 
 /**
  * Created by liWensheng on 2018/1/23.
@@ -43,4 +46,56 @@ public class RestClient {
     public static RestClientBuilder builder() {
         return new RestClientBuilder();
     }
+
+    private void request(HttpMethod method) {
+        final RestService service = RestCreator.getRestService();
+        Call<String> call = null;
+
+        if (REQUEST != null) {
+            REQUEST.onRequestStart();
+        }
+
+        switch (method) {
+            case GET:
+                call = service.get(URL, PARAMS);
+                break;
+            case POST:
+                call = service.put(URL, PARAMS);
+                break;
+            case PUT:
+                call = service.put(URL, PARAMS);
+                break;
+            case DELETE:
+                call = service.delete(URL, PARAMS);
+                break;
+            default:
+                break;
+        }
+
+        if (call != null) {
+            call.enqueue(getRequestCallback());
+        }
+    }
+
+    private Callback<String> getRequestCallback() {
+        return new RequestCallbacks(REQUEST, SUCCESS, FAILURE, ERROR);
+    }
+
+    public final void get() {
+        request(HttpMethod.GET);
+    }
+
+    public final void post() {
+        request(HttpMethod.POST);
+    }
+
+    public final void put() {
+        request(HttpMethod.PUT);
+    }
+
+    public final void delete() {
+        request(HttpMethod.DELETE);
+    }
 }
+
+
