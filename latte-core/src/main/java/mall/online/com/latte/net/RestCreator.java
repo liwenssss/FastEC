@@ -1,5 +1,6 @@
 package mall.online.com.latte.net;
 
+import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
 import mall.online.com.latte.app.ConfigType;
@@ -14,6 +15,15 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  */
 
 public class RestCreator {
+
+    private static final class ParamsHolder {
+        public static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
+    }
+
+    public static WeakHashMap<String, Object> getParams() {
+        return ParamsHolder.PARAMS;
+    }
+
 
     /**
      * 创造方法，提供rest服务
