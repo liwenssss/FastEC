@@ -1,5 +1,7 @@
 package mall.online.com.latte.net;
 
+import android.content.Context;
+
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -7,6 +9,7 @@ import mall.online.com.latte.net.callback.IError;
 import mall.online.com.latte.net.callback.IFailure;
 import mall.online.com.latte.net.callback.IRequest;
 import mall.online.com.latte.net.callback.ISuccess;
+import mall.online.com.latte.ui.LoaderStyle;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
@@ -16,13 +19,15 @@ import okhttp3.RequestBody;
  */
 
 public class RestClientBuilder {
-    private String mUrl;
+    private String mUrl = null;
     private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
-    private IRequest mIRequest;
-    private ISuccess mISuccess;
-    private IFailure mIFailure;
-    private IError mIError;
-    private RequestBody mBody;
+    private IRequest mIRequest = null;
+    private ISuccess mISuccess = null;
+    private IFailure mIFailure = null;
+    private IError mIError = null;
+    private RequestBody mBody = null;
+    private Context mContext = null;
+    private LoaderStyle mLoaderStyle = null;
 
     RestClientBuilder() {
 
@@ -68,7 +73,19 @@ public class RestClientBuilder {
         return this;
     }
 
+    public final RestClientBuilder loader(Context context, LoaderStyle loaderStyle) {
+        this.mContext = context;
+        this.mLoaderStyle = loaderStyle;
+        return this;
+    }
+
+    public final RestClientBuilder loader(Context context) {
+        this.mContext = context;
+        this.mLoaderStyle = LoaderStyle.BallClipRotatePulseIndicator;
+        return this;
+    }
+
     public final RestClient build() {
-        return new RestClient(mUrl, PARAMS, mIRequest, mISuccess, mIFailure, mIError, mBody);
+        return new RestClient(mUrl, PARAMS, mIRequest, mISuccess, mIFailure, mIError, mBody, mContext, mLoaderStyle);
     }
 }

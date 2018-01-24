@@ -29,6 +29,7 @@ public class MallDelegate extends LatteDelegate {
     private void testRestClient() {
         RestClient.builder()
                 .url("http://news.baidu.com/")
+                .loader(getContext())
 //                .params("", "")
                 .success(new ISuccess() {
                     @Override

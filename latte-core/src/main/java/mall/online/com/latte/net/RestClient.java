@@ -1,5 +1,7 @@
 package mall.online.com.latte.net;
 
+import android.content.Context;
+
 import java.security.PublicKey;
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -9,6 +11,8 @@ import mall.online.com.latte.net.callback.IFailure;
 import mall.online.com.latte.net.callback.IRequest;
 import mall.online.com.latte.net.callback.ISuccess;
 import mall.online.com.latte.net.callback.RequestCallbacks;
+import mall.online.com.latte.ui.LatteLoader;
+import mall.online.com.latte.ui.LoaderStyle;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,6 +30,9 @@ public class RestClient {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final RequestBody BODY;
+    private final Context CONTEXT;
+    private final LoaderStyle LOADER_STYLE;
+
 
     public RestClient(String url,
                       WeakHashMap<String, Object> params,
@@ -33,7 +40,10 @@ public class RestClient {
                       ISuccess success,
                       IFailure failure,
                       IError error,
-                      RequestBody body) {
+                      RequestBody body,
+                      Context context,
+                      LoaderStyle loaderStyle
+                      ) {
         this.URL = url;
         PARAMS.putAll(params);
         this.REQUEST = request;
@@ -41,6 +51,8 @@ public class RestClient {
         this.FAILURE = failure;
         this.ERROR = error;
         this.BODY = body;
+        this.CONTEXT = context;
+        this.LOADER_STYLE = loaderStyle;
     }
 
     public static RestClientBuilder builder() {
@@ -53,6 +65,10 @@ public class RestClient {
 
         if (REQUEST != null) {
             REQUEST.onRequestStart();
+        }
+
+        if (LOADER_STYLE != null) {
+            LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
         }
 
         switch (method) {
@@ -78,7 +94,13 @@ public class RestClient {
     }
 
     private Callback<String> getRequestCallback() {
-        return new RequestCallbacks(REQUEST, SUCCESS, FAILURE, ERROR);
+        return new RequestCallbacks(
+                REQUEST,
+                SUCCESS,
+                FAILURE,
+                ERROR,
+                LOADER_STYLE
+                );
     }
 
     public final void get() {
