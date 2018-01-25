@@ -1,4 +1,4 @@
-package mall.online.com.latte.utils;
+package mall.online.com.latte.utils.dimen;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;

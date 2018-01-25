@@ -12,6 +12,7 @@ import mall.online.com.latte.net.callback.IFailure;
 import mall.online.com.latte.net.callback.IRequest;
 import mall.online.com.latte.net.callback.ISuccess;
 import mall.online.com.latte.net.callback.RequestCallbacks;
+import mall.online.com.latte.net.download.DownloadHandler;
 import mall.online.com.latte.ui.LatteLoader;
 import mall.online.com.latte.ui.LoaderStyle;
 import okhttp3.MediaType;
@@ -28,6 +29,9 @@ import retrofit2.Callback;
 public class RestClient {
     private final String URL;
     private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSIONS;
+    private final String NAME;
     private final IRequest REQUEST;
     private final ISuccess SUCCESS;
     private final IFailure FAILURE;
@@ -40,6 +44,9 @@ public class RestClient {
 
     public RestClient(String url,
                       WeakHashMap<String, Object> params,
+                      String downloadDir,
+                      String extension,
+                      String name,
                       IRequest request,
                       ISuccess success,
                       IFailure failure,
@@ -51,6 +58,9 @@ public class RestClient {
                       ) {
         this.URL = url;
         PARAMS.putAll(params);
+        this.DOWNLOAD_DIR = downloadDir;
+        this.EXTENSIONS = extension;
+        this.NAME = name;
         this.REQUEST = request;
         this.SUCCESS = success;
         this.FAILURE = failure;
@@ -92,6 +102,7 @@ public class RestClient {
                 break;
             case PUT_RAW:
                 call = service.putRaw(URL, BODY);
+                break;
             case DELETE:
                 call = service.delete(URL, PARAMS);
                 break;
@@ -101,7 +112,7 @@ public class RestClient {
                                 MediaType.parse(MultipartBody.FORM.toString()), FILE);
                 final MultipartBody.Part body =
                         MultipartBody.Part.createFormData("file", FILE.getName(), requestBody);
-                call = RestCreator.getRestService().upload(URL, body);
+                call = service.upload(URL, body);
                 break;
             default:
                 break;
@@ -150,6 +161,16 @@ public class RestClient {
 
     public final void delete() {
         request(HttpMethod.DELETE);
+    }
+
+    public final void upload() {
+        request(HttpMethod.UPLOAD);
+    }
+
+    public final void download(){
+        new DownloadHandler(URL, REQUEST,
+                DOWNLOAD_DIR, EXTENSIONS,
+                NAME, SUCCESS, FAILURE, ERROR).handleDownload();
     }
 }
 

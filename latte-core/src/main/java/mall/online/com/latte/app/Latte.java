@@ -1,6 +1,7 @@
 package mall.online.com.latte.app;
 
 import android.content.Context;
+import android.os.Handler;
 
 import java.util.HashMap;
 import java.util.WeakHashMap;
@@ -15,11 +16,23 @@ public final class Latte {
         return Configurator.getInstance();
     }
 
+    public static Configurator getConfigurator() {
+        return Configurator.getInstance();
+    }
+
     public static HashMap<String, Object> getConfigurations() {
         return Configurator.getInstance().getFunctionConfigs();
     }
 
+    public static <T> T getConfiguration(Object key) {
+        return getConfigurator().getConfiguration(key);
+    }
+
     public static Context getApplication() {
         return (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
+    }
+
+    public static Context getApplicationContext() {
+        return getConfiguration(ConfigType.APPLICATION_CONTEXT);
     }
 }

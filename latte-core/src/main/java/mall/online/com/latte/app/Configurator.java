@@ -64,9 +64,13 @@ public class Configurator {
     }
 
     @SuppressWarnings("unchecked")
-    final <T> T getConfiguration(Enum<ConfigType> key) {
+    final <T> T getConfiguration(Object key) {
         checkConfiguration();
-        return (T) LATTE_CONFIGS.get(key.name());
+        final Object value = LATTE_CONFIGS.get(key);
+        if (value == null) {
+            throw new NullPointerException(key.toString() + " IS NULL");
+        }
+        return (T) LATTE_CONFIGS.get(key);
     }
 
     /**

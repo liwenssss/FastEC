@@ -11,7 +11,7 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.util.ArrayList;
 
 import mall.online.com.latte.R;
-import mall.online.com.latte.utils.DimenUtil;
+import mall.online.com.latte.utils.dimen.DimenUtil;
 
 /**
  * Created by liWensheng on 2018/1/24.
