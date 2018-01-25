@@ -43,7 +43,7 @@ public class RequestCallbacks implements Callback<String>{
             }
         }
 
-        stoploading();
+        stopLoading();
     }
 
     @Override
@@ -54,11 +54,10 @@ public class RequestCallbacks implements Callback<String>{
         if (REQUEST != null) {
             REQUEST.onRequestEnd();
         }
-
-        stoploading();
+        stopLoading();
     }
 
-    private void stoploading() {
+    private void stopLoading() {
         if (LOADER_STYLE != null) {
             HANDLER.postDelayed(new Runnable() {
                 @Override
@@ -66,5 +65,6 @@ public class RequestCallbacks implements Callback<String>{
                     LatteLoader.stopLoading();
                 }
             }, 1000);
+        }
     }
 }
