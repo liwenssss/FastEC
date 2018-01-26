@@ -5,19 +5,21 @@ import com.joanzapata.iconify.Iconify;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.WeakHashMap;
+
+import okhttp3.Interceptor;
 
 /**
  * Created by liWensheng on 2018/1/20.
  */
 
 public class Configurator {
-    private static final HashMap<String, Object> LATTE_CONFIGS = new HashMap<>();
+    private static final HashMap<Object, Object> LATTE_CONFIGS = new HashMap<>();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     private Configurator() {
         // 初始化配置
-        LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), false);
+        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, false);
 
     }
 
@@ -30,7 +32,7 @@ public class Configurator {
         return Holder.INSTANCE;
     }
 
-    final HashMap<String, Object> getFunctionConfigs() {
+    final HashMap<Object, Object> getFunctionConfigs() {
         return LATTE_CONFIGS;
     }
 
@@ -40,7 +42,7 @@ public class Configurator {
     public final void  configure() {
         // 初始化图标
         initIcons();
-        LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), true);
+        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, true);
     }
 
     /**
@@ -49,7 +51,34 @@ public class Configurator {
      * @return
      */
     public final Configurator withApiHost(String host){
-        LATTE_CONFIGS.put(ConfigType.API_HOST.name(), host);
+        LATTE_CONFIGS.put(ConfigKeys.API_HOST, host);
+        return this;
+    }
+
+    /**
+     * import ICONS
+     * @param descriptor
+     * @return
+     */
+    public final Configurator withIcon(IconFontDescriptor descriptor) {
+        ICONS.add(descriptor);
+        return this;
+    }
+
+    /**
+     * import interceptor
+     * @param interceptor
+     * @return
+     */
+    public final Configurator withInterceptor(Interceptor interceptor) {
+        INTERCEPTORS.add(interceptor);
+        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors) {
+        INTERCEPTORS.addAll(interceptors);
+        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
 
@@ -57,13 +86,12 @@ public class Configurator {
      * check if config is ready
      */
     private void checkConfiguration() {
-        final boolean isReady = (boolean)LATTE_CONFIGS.get(ConfigType.CONFIG_READY.name());
+        final boolean isReady = (boolean)LATTE_CONFIGS.get(ConfigKeys.CONFIG_READY);
         if (!isReady) {
             throw new RuntimeException("Configuration is not ready, call configure");
         }
     }
 
-    @SuppressWarnings("unchecked")
     final <T> T getConfiguration(Object key) {
         checkConfiguration();
         final Object value = LATTE_CONFIGS.get(key);
@@ -83,15 +111,5 @@ public class Configurator {
                 initializer.with(ICONS.get(i));
             }
         }
-    }
-
-    /**
-     * import ICONS
-     * @param descriptor
-     * @return
-     */
-    public final Configurator withIcon(IconFontDescriptor descriptor) {
-        ICONS.add(descriptor);
-        return this;
     }
 }
