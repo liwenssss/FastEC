@@ -6,6 +6,7 @@ import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 import mall.online.com.latte.app.Latte;
 import mall.online.com.latte.ec.icon.FontEcModule;
+import mall.online.com.latte.net.interceptors.DebugInterceptor;
 
 /**
  * Created by liWensheng on 2018/1/21.
@@ -19,6 +20,7 @@ public class MallApp extends Application {
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
                 .withApiHost("http://127.0.0.1/")
+                .withInterceptor(new DebugInterceptor("index", R.raw.test))
                 .configure();
     }
 }
