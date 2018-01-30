@@ -7,12 +7,13 @@ import android.widget.Toast;
 import mall.online.com.latte.activities.ProxyActivity;
 import mall.online.com.latte.app.Latte;
 import mall.online.com.latte.delegate.LatteDelegate;
+import mall.online.com.latte.ec.launcher.LauncherDelegate;
 
 public class MallActivity extends ProxyActivity {
 
 
     @Override
     public LatteDelegate setRootDelete() {
-        return new MallDelegate();
+        return new LauncherDelegate();
     }
 }
