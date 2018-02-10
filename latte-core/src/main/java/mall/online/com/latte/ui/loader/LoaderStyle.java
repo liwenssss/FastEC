@@ -1,4 +1,4 @@
-package mall.online.com.latte.ui;
+package mall.online.com.latte.ui.loader;
 
 /**
  * Created by liWensheng on 2018/1/24.

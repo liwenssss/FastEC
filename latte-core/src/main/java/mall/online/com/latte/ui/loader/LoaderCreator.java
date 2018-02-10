@@ -1,4 +1,4 @@
-package mall.online.com.latte.ui;
+package mall.online.com.latte.ui.loader;
 
 import android.content.Context;
 

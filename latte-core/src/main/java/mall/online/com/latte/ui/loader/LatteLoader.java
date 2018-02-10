@@ -1,4 +1,4 @@
-package mall.online.com.latte.ui;
+package mall.online.com.latte.ui.loader;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;
@@ -11,6 +11,8 @@ import com.wang.avi.AVLoadingIndicatorView;
 import java.util.ArrayList;
 
 import mall.online.com.latte.R;
+import mall.online.com.latte.ui.loader.LoaderCreator;
+import mall.online.com.latte.ui.loader.LoaderStyle;
 import mall.online.com.latte.utils.dimen.DimenUtil;
 
 /**

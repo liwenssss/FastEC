@@ -3,8 +3,6 @@ package mall.online.com.latte.net;
 import android.content.Context;
 
 import java.io.File;
-import java.security.PublicKey;
-import java.util.Map;
 import java.util.WeakHashMap;
 
 import mall.online.com.latte.net.callback.IError;
@@ -13,8 +11,8 @@ import mall.online.com.latte.net.callback.IRequest;
 import mall.online.com.latte.net.callback.ISuccess;
 import mall.online.com.latte.net.callback.RequestCallbacks;
 import mall.online.com.latte.net.download.DownloadHandler;
-import mall.online.com.latte.ui.LatteLoader;
-import mall.online.com.latte.ui.LoaderStyle;
+import mall.online.com.latte.ui.loader.LatteLoader;
+import mall.online.com.latte.ui.loader.LoaderStyle;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;

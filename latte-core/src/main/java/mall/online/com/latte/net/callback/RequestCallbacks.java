@@ -2,8 +2,8 @@ package mall.online.com.latte.net.callback;
 
 import android.os.Handler;
 
-import mall.online.com.latte.ui.LatteLoader;
-import mall.online.com.latte.ui.LoaderStyle;
+import mall.online.com.latte.ui.loader.LatteLoader;
+import mall.online.com.latte.ui.loader.LoaderStyle;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
