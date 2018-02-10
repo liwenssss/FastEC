@@ -11,6 +11,7 @@ import mall.online.com.latte.app.Latte;
 import mall.online.com.latte.delegate.LatteDelegate;
 import mall.online.com.latte.ec.launcher.LauncherDelegate;
 import mall.online.com.latte.ec.launcher.LauncherScrollDelegate;
+import mall.online.com.latte.ec.sign.SignUpDelegate;
 
 public class MallActivity extends ProxyActivity {
 
@@ -26,6 +27,6 @@ public class MallActivity extends ProxyActivity {
 
     @Override
     public LatteDelegate setRootDelete() {
-        return new LauncherDelegate();
+        return new SignUpDelegate();
     }
 }
