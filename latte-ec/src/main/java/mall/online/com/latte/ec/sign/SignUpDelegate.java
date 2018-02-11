@@ -50,6 +50,11 @@ public class SignUpDelegate extends LatteDelegate {
         }
     }
 
+    @OnClick(R2.id.tv_link_sign_in)
+    void onClikLink() {
+        start(new SignInDelegate());
+    }
+
     /**
      * 校验输入样式
      * @return
