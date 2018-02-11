@@ -5,6 +5,7 @@ import android.app.Application;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 import mall.online.com.latte.app.Latte;
+import mall.online.com.latte.ec.database.DatabaseManager;
 import mall.online.com.latte.ec.icon.FontEcModule;
 import mall.online.com.latte.net.interceptors.DebugInterceptor;
 
@@ -22,5 +23,7 @@ public class MallApp extends Application {
                 .withApiHost("http://127.0.0.1/")
                 .withInterceptor(new DebugInterceptor("index", R.raw.test))
                 .configure();
+
+        DatabaseManager.getInstance().init(this);
     }
 }

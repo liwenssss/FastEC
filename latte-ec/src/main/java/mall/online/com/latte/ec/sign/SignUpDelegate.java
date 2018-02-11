@@ -3,9 +3,13 @@ package mall.online.com.latte.ec.sign;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
+
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -13,7 +17,10 @@ import mall.online.com.latte.delegate.LatteDelegate;
 import mall.online.com.latte.ec.R;
 import mall.online.com.latte.ec.R2;
 import mall.online.com.latte.net.RestClient;
+import mall.online.com.latte.net.callback.IError;
+import mall.online.com.latte.net.callback.IFailure;
 import mall.online.com.latte.net.callback.ISuccess;
+import mall.online.com.latte.utils.log.LogUtil;
 
 /**
  * Created by liWensheng on 2018/2/10.
@@ -35,17 +42,32 @@ public class SignUpDelegate extends LatteDelegate {
     @OnClick(R2.id.btn_sign_up)
     void onClickSignUp() {
         if (checkForm()) {
-//            RestClient.builder()
-//                    .url("sign_up")
-//                    .params("", "")
-//                    .success(new ISuccess() {
-//                        @Override
-//                        public void onSuceess(String response) {
-//
-//                        }
-//                    })
-//                    .build()
-//                    .post();
+            RestClient.builder()
+                    .url("http://114.67.145.163/RestServer/api/")
+                    .params("name", mName.getText().toString())
+                    .params("email", mEmail.getText().toString())
+                    .params("phone", mPhone.getText().toString())
+                    .params("password", mPassword.getText().toString())
+                    .success(new ISuccess() {
+                        @Override
+                        public void onSuceess(String response) {
+                            LogUtil.json("USER_PROFILE", response);
+                        }
+                    })
+                    .failure(new IFailure() {
+                        @Override
+                        public void onFailure() {
+                            Log.i("fail", "fail: ");
+                        }
+                    })
+                    .error(new IError() {
+                        @Override
+                        public void onError(int code, String msg) {
+                            Log.i("error", "error: ");
+                        }
+                    })
+                    .build()
+                    .post();
             Toast.makeText(getContext(), "验证通过", Toast.LENGTH_SHORT).show();
         }
     }
