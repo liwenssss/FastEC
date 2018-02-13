@@ -13,7 +13,6 @@ public class DatabaseManager {
     private UserProfileDao mDao = null;
 
     private DatabaseManager() {
-
     }
 
     public DatabaseManager init(Context context) {

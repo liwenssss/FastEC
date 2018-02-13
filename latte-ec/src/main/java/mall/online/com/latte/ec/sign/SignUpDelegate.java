@@ -1,5 +1,6 @@
 package mall.online.com.latte.ec.sign;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -8,8 +9,6 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -24,6 +23,7 @@ import mall.online.com.latte.utils.log.LogUtil;
 
 /**
  * Created by liWensheng on 2018/2/10.
+ * 注册
  */
 
 public class SignUpDelegate extends LatteDelegate {
@@ -39,11 +39,21 @@ public class SignUpDelegate extends LatteDelegate {
     @BindView(R2.id.edit_sign_up_re_password)
     TextInputEditText mRePassword = null;
 
+    ISignListener mISignListener = null;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ISignListener) {
+            mISignListener = (ISignListener) activity;
+        }
+    }
+
     @OnClick(R2.id.btn_sign_up)
     void onClickSignUp() {
         if (checkForm()) {
             RestClient.builder()
-                    .url("http://114.67.145.163/RestServer/api/")
+                    .url("http://114.67.145.163/RestServer/data/user_profile.json")
                     .params("name", mName.getText().toString())
                     .params("email", mEmail.getText().toString())
                     .params("phone", mPhone.getText().toString())
@@ -52,6 +62,7 @@ public class SignUpDelegate extends LatteDelegate {
                         @Override
                         public void onSuceess(String response) {
                             LogUtil.json("USER_PROFILE", response);
+                            SignHander.onSignUp(response, mISignListener);
                         }
                     })
                     .failure(new IFailure() {
@@ -68,7 +79,7 @@ public class SignUpDelegate extends LatteDelegate {
                     })
                     .build()
                     .post();
-            Toast.makeText(getContext(), "验证通过", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(), "验证通过", Toast.LENGTH_SHORT).show();
         }
     }
 
