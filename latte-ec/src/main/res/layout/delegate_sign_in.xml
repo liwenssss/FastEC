@@ -103,7 +103,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:text="{fa-weixin}"
-                android:textColor="#04b00f"
+                android:textColor="@color/colorGreen"
                 android:textSize="40sp"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal"

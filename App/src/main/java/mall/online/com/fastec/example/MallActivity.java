@@ -11,6 +11,7 @@ import mall.online.com.latte.app.Latte;
 import mall.online.com.latte.delegate.LatteDelegate;
 import mall.online.com.latte.ec.launcher.LauncherDelegate;
 import mall.online.com.latte.ec.launcher.LauncherScrollDelegate;
+import mall.online.com.latte.ec.main.EcBottomDelegate;
 import mall.online.com.latte.ec.sign.ISignListener;
 import mall.online.com.latte.ec.sign.SignInDelegate;
 import mall.online.com.latte.ec.sign.SignUpDelegate;
@@ -52,7 +53,7 @@ public class MallActivity extends ProxyActivity implements
         switch (tag) {
             case SIGNED:
                 Toast.makeText(this, "启动结束,用户登录", Toast.LENGTH_LONG).show();
-                startWithPop(new MallDelegate());
+                startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
                 Toast.makeText(this, "启动结束,用户没登录", Toast.LENGTH_LONG).show();
