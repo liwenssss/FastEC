@@ -33,7 +33,7 @@ public class MallActivity extends ProxyActivity implements
     }
 
     @Override
-    public LatteDelegate setRootDelete() {
+    public LatteDelegate setRootDelegate() {
         return new LauncherDelegate();
     }
 

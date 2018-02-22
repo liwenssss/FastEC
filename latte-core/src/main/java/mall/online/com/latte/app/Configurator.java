@@ -10,6 +10,7 @@ import okhttp3.Interceptor;
 
 /**
  * Created by liWensheng on 2018/1/20.
+ * 管理配置信息
  */
 
 public class Configurator {
@@ -37,7 +38,7 @@ public class Configurator {
     }
 
     /**
-     * set config is ready
+     * 配置完成
      */
     public final void  configure() {
         // 初始化图标
@@ -46,7 +47,7 @@ public class Configurator {
     }
 
     /**
-     * set API_HOST
+     * 配置 API_HOST
      * @param host
      * @return
      */
@@ -66,7 +67,7 @@ public class Configurator {
     }
 
     /**
-     * import interceptor
+     * 配置和拦截器
      * @param interceptor
      * @return
      */
@@ -83,7 +84,7 @@ public class Configurator {
     }
 
     /**
-     * check if config is ready
+     * 检查配置是否完成，在获取配置时调用，防止异常发生
      */
     private void checkConfiguration() {
         final boolean isReady = (boolean)LATTE_CONFIGS.get(ConfigKeys.CONFIG_READY);
@@ -102,7 +103,7 @@ public class Configurator {
     }
 
     /**
-     * init ICONS
+     * 初始化 ICONS
      */
     private void initIcons() {
         if (ICONS.size() > 0) {

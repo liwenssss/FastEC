@@ -20,19 +20,21 @@ public final class Latte {
         return Configurator.getInstance();
     }
 
-//    public static HashMap<String, Object> getConfigurations() {
-//        return Configurator.getInstance().getFunctionConfigs();
-//    }
-
     public static <T> T getConfiguration(Object key) {
         return getConfigurator().getConfiguration(key);
     }
 
-//    public static Context getApplication() {
-//        return (Context) getConfigurations().get(ConfigKeys.APPLICATION_CONTEXT.name());
-//    }
-
     public static Context getApplicationContext() {
         return getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
     }
+
+//    public static HashMap<String, Object> getConfigurations() {
+//        return Configurator.getInstance().getFunctionConfigs();
+//    }
+
+
+
+//    public static Context getApplication() {
+//        return (Context) getConfigurations().get(ConfigKeys.APPLICATION_CONTEXT.name());
+//    }
 }

@@ -21,7 +21,7 @@ public abstract class ProxyActivity extends SupportActivity{
      * set root delegate
      * @return
      */
-    public abstract LatteDelegate setRootDelete();
+    public abstract LatteDelegate setRootDelegate();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public abstract class ProxyActivity extends SupportActivity{
     }
 
     /**
-     * init container
+     * 初始化容器
      * @param savedInstanceState
      */
     private void initContainer(@Nullable Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public abstract class ProxyActivity extends SupportActivity{
         setContentView(container);
         if (savedInstanceState == null) {
             // 如果第一次加载
-            loadRootFragment(R.id.delegate_container, setRootDelete());
+            loadRootFragment(R.id.delegate_container, setRootDelegate());
         }
     }
 

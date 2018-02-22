@@ -2,6 +2,7 @@ package mall.online.com.latte.app;
 
 /**
  * Created by liWensheng on 2018/1/20.
+ * 应用程序内唯一单例，只能被初始化一次
  */
 
 public enum ConfigKeys {
