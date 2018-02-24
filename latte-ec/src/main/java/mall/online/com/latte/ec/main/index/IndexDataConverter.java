@@ -17,7 +17,7 @@ import mall.online.com.latte.ui.recycler.MultipleItemEntityBuilder;
  */
 
 public class IndexDataConverter extends DataConverter {
-    
+
     @Override
     public ArrayList<MultipleItemEntity> convert() {
         final JSONArray dataArray = JSON.parseObject(getJsonData()).getJSONArray("data");
