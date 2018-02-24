@@ -21,7 +21,7 @@ public class MallApp extends Application {
         Latte.init(this)
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
-                .withApiHost("http://127.0.0.1/")
+                .withApiHost("http://114.67.145.163/RestServer/api/")
                 .withInterceptor(new DebugInterceptor("index", R.raw.test))
                 .configure();
         initStetho();

@@ -3,6 +3,7 @@ package mall.online.com.latte.app;
 import android.content.Context;
 
 import java.util.HashMap;
+import android.os.Handler;
 
 /**
  * Created by liWensheng on 2018/1/20.
@@ -26,6 +27,10 @@ public final class Latte {
 
     public static Context getApplicationContext() {
         return getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
+    }
+
+    public static Handler getHandler() {
+        return getConfiguration(ConfigKeys.HANDLER);
     }
 
 //    public static HashMap<String, Object> getConfigurations() {

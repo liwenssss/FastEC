@@ -86,4 +86,7 @@ dependencies {
     compile "io.reactivex.rxjava2:rxjava:2.1.1"
     compile "io.reactivex.rxjava2:rxandroid:2.0.1"
     compile "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+
+    //RecyclerView 依赖
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 }

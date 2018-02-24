@@ -11,5 +11,7 @@ public enum ConfigKeys {
     CONFIG_READY,           //控制初始化及配置的完成
     ICON,                    //存取个人初始化
     LOADER_DELAYED,
-    INTERCEPTOR
+    INTERCEPTOR,
+    HANDLER,
+    ACTIVITY
 }
