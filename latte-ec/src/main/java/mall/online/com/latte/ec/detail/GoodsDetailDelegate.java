@@ -13,10 +13,10 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
  * Created by liWensheng on 2018/2/25.
  */
 
-public class GoodsDetailDelagate extends LatteDelegate {
+public class GoodsDetailDelegate extends LatteDelegate {
 
-    public static GoodsDetailDelagate create() {
-        return new GoodsDetailDelagate();
+    public static GoodsDetailDelegate create() {
+        return new GoodsDetailDelegate();
     }
 
     @Override

@@ -6,7 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 
 import mall.online.com.latte.delegate.LatteDelegate;
-import mall.online.com.latte.ec.detail.GoodsDetailDelagate;
+import mall.online.com.latte.ec.detail.GoodsDetailDelegate;
 
 /**
  * Created by liWensheng on 2018/2/25.
@@ -27,7 +27,7 @@ public class IndexItemClickListener extends SimpleClickListener {
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        final GoodsDetailDelagate delagate = GoodsDetailDelagate.create();
+        final GoodsDetailDelegate delagate = GoodsDetailDelegate.create();
         DELEGATE.start(delagate);
     }
 

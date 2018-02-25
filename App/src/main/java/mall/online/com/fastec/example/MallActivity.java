@@ -2,7 +2,6 @@ package mall.online.com.fastec.example;
 
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -10,11 +9,9 @@ import mall.online.com.latte.activities.ProxyActivity;
 import mall.online.com.latte.app.Latte;
 import mall.online.com.latte.delegate.LatteDelegate;
 import mall.online.com.latte.ec.launcher.LauncherDelegate;
-import mall.online.com.latte.ec.launcher.LauncherScrollDelegate;
 import mall.online.com.latte.ec.main.EcBottomDelegate;
 import mall.online.com.latte.ec.sign.ISignListener;
 import mall.online.com.latte.ec.sign.SignInDelegate;
-import mall.online.com.latte.ec.sign.SignUpDelegate;
 import mall.online.com.latte.ui.launcher.ILauncherListener;
 import mall.online.com.latte.ui.launcher.OnLauncherFinishTag;
 import qiu.niorgai.StatusBarCompat;

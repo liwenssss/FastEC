@@ -2,7 +2,6 @@ package mall.online.com.latte.ec.main.index;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatEditText;
@@ -10,22 +9,15 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
 import com.joanzapata.iconify.widget.IconTextView;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import mall.online.com.latte.delegate.bottom.BottomItemDelagate;
 import mall.online.com.latte.ec.R;
 import mall.online.com.latte.ec.R2;
 import mall.online.com.latte.ec.main.EcBottomDelegate;
-import mall.online.com.latte.net.RestClient;
-import mall.online.com.latte.net.callback.ISuccess;
 import mall.online.com.latte.ui.recycler.BaseDecoration;
-import mall.online.com.latte.ui.recycler.MultipleFields;
-import mall.online.com.latte.ui.recycler.MultipleItemEntity;
 import mall.online.com.latte.ui.refresh.RefreshHandler;
 
 /**
