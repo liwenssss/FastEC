@@ -5,4 +5,8 @@ package mall.online.com.latte.delegate;
  */
 
 public abstract class LatteDelegate extends PermissionCheckDelegate {
+
+    public <T extends LatteDelegate> T getParentDelegate() {
+        return (T) getParentFragment();
+    }
 }

@@ -20,6 +20,7 @@ import butterknife.BindView;
 import mall.online.com.latte.delegate.bottom.BottomItemDelagate;
 import mall.online.com.latte.ec.R;
 import mall.online.com.latte.ec.R2;
+import mall.online.com.latte.ec.main.EcBottomDelegate;
 import mall.online.com.latte.net.RestClient;
 import mall.online.com.latte.net.callback.ISuccess;
 import mall.online.com.latte.ui.recycler.BaseDecoration;
@@ -61,6 +62,10 @@ public class IndexDelegate extends BottomItemDelagate {
                 android.R.color.holo_red_light
         );
         mRefreshLayout.setProgressViewOffset(true, 120, 300);
+
+        // 得到父级元素
+        final EcBottomDelegate ecBottomDelegate = getParentDelegate();
+        mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
     }
 
     private void initRecyclerView() {
