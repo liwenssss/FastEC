@@ -17,6 +17,7 @@ import mall.online.com.latte.ec.sign.SignInDelegate;
 import mall.online.com.latte.ec.sign.SignUpDelegate;
 import mall.online.com.latte.ui.launcher.ILauncherListener;
 import mall.online.com.latte.ui.launcher.OnLauncherFinishTag;
+import qiu.niorgai.StatusBarCompat;
 
 public class MallActivity extends ProxyActivity implements
         ISignListener,
@@ -31,6 +32,8 @@ public class MallActivity extends ProxyActivity implements
         if (actionBar != null) {
             actionBar.hide();
         }
+        Latte.getConfigurator().withActivity(this);
+        StatusBarCompat.translucentStatusBar(this, true);
     }
 
     @Override
