@@ -80,7 +80,7 @@ public class MultipleRecyclerAdapter
                 imageUrl = entity.getField(MultipleFields.IMAGE_URL);
                 Glide.with(mContext)
                         .load(imageUrl)
-                        .diskCacheStrategy((DiskCacheStrategy.ALL))
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .dontAnimate()
                         .centerCrop()
                         .into((ImageView) holder.getView(R.id.img_single));

@@ -3,6 +3,7 @@ package mall.online.com.latte.ec.main.index;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.GridLayoutManager;
@@ -21,6 +22,7 @@ import mall.online.com.latte.ec.R;
 import mall.online.com.latte.ec.R2;
 import mall.online.com.latte.net.RestClient;
 import mall.online.com.latte.net.callback.ISuccess;
+import mall.online.com.latte.ui.recycler.BaseDecoration;
 import mall.online.com.latte.ui.recycler.MultipleFields;
 import mall.online.com.latte.ui.recycler.MultipleItemEntity;
 import mall.online.com.latte.ui.refresh.RefreshHandler;
@@ -64,6 +66,8 @@ public class IndexDelegate extends BottomItemDelagate {
     private void initRecyclerView() {
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(manager);
+        // 添加分割线
+        mRecyclerView.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
     }
 
     @Override
