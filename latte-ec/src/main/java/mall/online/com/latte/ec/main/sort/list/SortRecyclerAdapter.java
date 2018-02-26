@@ -7,8 +7,10 @@ import android.view.View;
 
 import java.util.List;
 
+import mall.online.com.latte.delegate.LatteDelegate;
 import mall.online.com.latte.ec.R;
 import mall.online.com.latte.ec.main.sort.SortDelegate;
+import mall.online.com.latte.ec.main.sort.content.ContentDelegate;
 import mall.online.com.latte.ui.recycler.ItemType;
 import mall.online.com.latte.ui.recycler.MultipleFields;
 import mall.online.com.latte.ui.recycler.MultipleItemEntity;
@@ -57,7 +59,9 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
 
                             mPrePosition = currentPosition;
 
+                            // 更新右侧内容fragment
                             final int contentId = getData().get(currentPosition).getField(MultipleFields.ID);
+                            showContent(contentId);
                         }
                     }
                 });
@@ -77,4 +81,22 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
                 break;
         }
     }
+
+    /**
+     * 显示右侧内容
+     */
+    private void showContent(int contentId) {
+        final ContentDelegate delegate = ContentDelegate.newInstance(contentId);
+        switchContent(delegate);
+    }
+
+    private void switchContent(ContentDelegate delegate) {
+        // 找到相应的子delegate
+        final LatteDelegate contentDelegate = DELEGATE.findChildFragment(ContentDelegate.class);
+        if (contentDelegate != null) { // 如果存在则切换
+            contentDelegate.replaceFragment(delegate, false);
+        }
+    }
+
+
 }
