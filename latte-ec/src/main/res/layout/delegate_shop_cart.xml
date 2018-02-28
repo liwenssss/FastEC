@@ -50,7 +50,7 @@
     </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/iv_shop_cart"
+        android:id="@+id/rv_shop_cart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
@@ -65,7 +65,7 @@
         android:minHeight="50dp"
         />
 
-    <LinearLayout
+    <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -137,6 +137,6 @@
             android:textSize="20sp"
             android:text="结算"
             />
-    </LinearLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
 
 </android.support.v7.widget.LinearLayoutCompat>
