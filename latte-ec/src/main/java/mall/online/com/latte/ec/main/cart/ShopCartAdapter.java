@@ -25,10 +25,16 @@ import mall.online.com.latte.ui.recycler.MultipleViewHolder;
 
 public class ShopCartAdapter extends MultipleRecyclerAdapter {
 
+    private boolean mIsSelectedAll = false;
+
     protected ShopCartAdapter(List<MultipleItemEntity> data) {
         super(data);
         //添加购物车item布局
         addItemType(ItemType.SHOP_CART_ITEM, R.layout.item_shop_cart);
+    }
+
+    public void setIsSelectedAll(boolean isSelectedAll) {
+        this.mIsSelectedAll = isSelectedAll;
     }
 
     @Override
@@ -44,7 +50,6 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                 final int count = entity.getField(MultipleFields.COUNT);
                 final double price = entity.getField(MultipleFields.PRICE);
                 final String thumb = entity.getField(MultipleFields.IMAGE_URL);
-                final boolean isSelected = entity.getField(MultipleFields.IS_SELECTED);
 
                 // 取控件
                 final AppCompatTextView tvTitle = holder.getView(R.id.tv_item_shop_cart_title);
@@ -64,6 +69,10 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                 Glide.with(mContext)
                         .load(thumb)
                         .into(imageThumb);
+
+                entity.setField(MultipleFields.IS_SELECTED, mIsSelectedAll);
+                final boolean isSelected = entity.getField(MultipleFields.IS_SELECTED);
+
 
                 // 显示是否被选中
                 if (isSelected) {

@@ -42,6 +42,7 @@ public class ShopCartDateConverter extends DataConverter {
                     .setField(MultipleFields.COUNT, count)
                     .setField(MultipleFields.IMAGE_URL, thumb)
                     .setField(MultipleFields.IS_SELECTED, false)
+                    .setField(MultipleFields.POSITION, i)
                     .build();
 
             dataList.add(entity);
