@@ -29,9 +29,9 @@ public class EventManager {
 
     public Event createEvent(String action) {
         final Event event = EVENTS.get(action);
-//        if (event == null) {
-//            return new UndefinedEvent();
-//        }
-        return new TestEvent();
+        if (event == null) {
+            return new UndefinedEvent();
+        }
+        return event;
     }
 }

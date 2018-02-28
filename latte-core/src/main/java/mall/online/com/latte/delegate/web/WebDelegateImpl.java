@@ -8,6 +8,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import mall.online.com.latte.delegate.web.chromeClient.WebChromeClientImpl;
+import mall.online.com.latte.delegate.web.client.IPageLoadListener;
 import mall.online.com.latte.delegate.web.client.WebViewClientImpl;
 import mall.online.com.latte.delegate.web.route.RouteKeys;
 import mall.online.com.latte.delegate.web.route.Router;
@@ -17,6 +18,8 @@ import mall.online.com.latte.delegate.web.route.Router;
  */
 
 public class WebDelegateImpl extends WebDelegate  {
+
+    private IPageLoadListener mIPageLoadListener = null;
 
     public static WebDelegateImpl create(String url) {
         final Bundle args = new Bundle();
@@ -54,11 +57,16 @@ public class WebDelegateImpl extends WebDelegate  {
     @Override
     public WebViewClient initWebViewClient() {
         final WebViewClientImpl client = new WebViewClientImpl(this);
+        client.setPageLoadListener(mIPageLoadListener);
         return client;
     }
 
     @Override
     public WebChromeClient intiWebChromeClient() {
         return new WebChromeClientImpl();
+    }
+
+    public void setPageLoadListener(IPageLoadListener listener) {
+        this.mIPageLoadListener = listener;
     }
 }

@@ -1,7 +1,9 @@
-package mall.online.com.latte.delegate.web.event;
+package mall.online.com.fastec.example.event;
 
 import android.webkit.WebView;
 import android.widget.Toast;
+
+import mall.online.com.latte.delegate.web.event.Event;
 
 /**
  * Created by liWensheng on 2018/2/26.

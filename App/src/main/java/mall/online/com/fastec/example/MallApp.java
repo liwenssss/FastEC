@@ -5,6 +5,7 @@ import android.app.Application;
 import com.facebook.stetho.Stetho;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
+import mall.online.com.fastec.example.event.TestEvent;
 import mall.online.com.latte.app.Latte;
 import mall.online.com.latte.ec.database.DatabaseManager;
 import mall.online.com.latte.ec.icon.FontEcModule;
@@ -23,6 +24,8 @@ public class MallApp extends Application {
                 .withIcon(new FontEcModule())
                 .withApiHost("http://114.67.145.163/RestServer/api/")
                 .withInterceptor(new DebugInterceptor("index", R.raw.test))
+                .withJavascriptInterface("ec")
+                .withWebEvent("test", new TestEvent())
                 .configure();
         initStetho();
         DatabaseManager.getInstance().init(this);

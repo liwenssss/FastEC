@@ -11,6 +11,8 @@ import java.lang.ref.WeakReference;
 
 import javax.sql.StatementEvent;
 
+import mall.online.com.latte.app.ConfigKeys;
+import mall.online.com.latte.app.Latte;
 import mall.online.com.latte.delegate.LatteDelegate;
 import mall.online.com.latte.delegate.web.route.RouteKeys;
 
@@ -55,7 +57,9 @@ public abstract class WebDelegate extends LatteDelegate implements IWebViewIniti
                 mWebView = initializer.initWebView(mWebView);
                 mWebView.setWebViewClient(initializer.initWebViewClient());
                 mWebView.setWebChromeClient(initializer.intiWebChromeClient());
-                mWebView.addJavascriptInterface(LatteWebInterface.create(this), "ec");
+
+                String name = Latte.getConfiguration(ConfigKeys.JAVASCRIPT_INTERFACE);
+                mWebView.addJavascriptInterface(LatteWebInterface.create(this), name);
                 mIsWebAvailable = true;
             } else {
                 throw new  NullPointerException("Initializer is null");

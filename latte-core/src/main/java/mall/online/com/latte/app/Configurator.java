@@ -11,6 +11,8 @@ import com.orhanobut.logger.Logger;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import mall.online.com.latte.delegate.web.event.Event;
+import mall.online.com.latte.delegate.web.event.EventManager;
 import okhttp3.Interceptor;
 
 /**
@@ -62,6 +64,28 @@ public class Configurator {
      */
     public final Configurator withApiHost(String host){
         LATTE_CONFIGS.put(ConfigKeys.API_HOST, host);
+        return this;
+    }
+
+    /**
+     * 添加event
+     * @param name
+     * @param event
+     * @return
+     */
+    public Configurator withWebEvent(String name, Event event) {
+        final EventManager manager = EventManager.getInstance();
+        manager.addEvent(name, event);
+        return this;
+    }
+
+    /**
+     * 添加JavaScript事件
+     * @param name
+     * @return
+     */
+    public Configurator withJavascriptInterface(String name) {
+        LATTE_CONFIGS.put(ConfigKeys.JAVASCRIPT_INTERFACE, name);
         return this;
     }
 
