@@ -57,11 +57,13 @@
         />
 
     <android.support.v7.widget.ViewStubCompat
+        android:id="@+id/stub_no_item"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="8"
         android:orientation="horizontal"
         android:background="@android:color/white"
+        android:layout="@layout/stub_shop_cart_no_item"
         android:minHeight="50dp"
         />
 
@@ -117,10 +119,12 @@
                 android:text="合计"
                 android:textColor="@android:color/darker_gray" />
             <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_shop_cart_total_price"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center|left"
+                android:layout_marginLeft="5dp"
                 android:text="￥0.01"
                 android:textSize="20sp"
                 android:textColor="@color/wechat_black" />
@@ -128,6 +132,7 @@
 
         <!--结算-->
         <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_shop_cart_pay"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
