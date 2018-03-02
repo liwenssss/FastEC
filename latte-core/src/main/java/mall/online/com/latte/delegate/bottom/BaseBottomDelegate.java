@@ -19,6 +19,7 @@ import butterknife.BindView;
 import mall.online.com.latte.R;
 import mall.online.com.latte.R2;
 import mall.online.com.latte.delegate.LatteDelegate;
+import me.yokeyword.fragmentation.ISupportFragment;
 import me.yokeyword.fragmentation.SupportFragment;
 
 /**
@@ -96,8 +97,8 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
             }
         }
 
-        final SupportFragment[] delegateArray = ITEM_DELEGATES.toArray(new SupportFragment[size]);
-        loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mIndexDelegate, delegateArray);
+        final ISupportFragment[] delegateArray = ITEM_DELEGATES.toArray(new ISupportFragment[size]);
+        getSupportDelegate().loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mIndexDelegate, delegateArray);
     }
 
     /**
@@ -131,7 +132,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
         itemTitle.setTextColor(mClickColor);
 
         // 此时显示tag对应的fragment，并把当前fragment隐藏
-        showHideFragment(ITEM_DELEGATES.get(tag), ITEM_DELEGATES.get(mCurrentDelegate));
+        getSupportDelegate().showHideFragment(ITEM_DELEGATES.get(tag), ITEM_DELEGATES.get(mCurrentDelegate));
         mCurrentDelegate = tag;
     }
 }

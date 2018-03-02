@@ -65,13 +65,13 @@ public class PersonalDelegate extends BottomItemDelagate{
 
     @OnClick(R2.id.img_user_avatar)
     void onClickAvatar() {
-        getParentDelegate().start(new UserProfileDelegate());
+        getParentDelegate().getSupportDelegate().start(new UserProfileDelegate());
     }
 
     private void startOrderListByType() {
         final OrderListDelegate delegate = new OrderListDelegate();
         delegate.setArguments(mArgs);
-        getParentDelegate().start(delegate);
+        getParentDelegate().getSupportDelegate().start(delegate);
     }
 
     @Override

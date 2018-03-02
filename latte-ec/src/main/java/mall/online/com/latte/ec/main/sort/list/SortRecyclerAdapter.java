@@ -16,6 +16,7 @@ import mall.online.com.latte.ui.recycler.MultipleFields;
 import mall.online.com.latte.ui.recycler.MultipleItemEntity;
 import mall.online.com.latte.ui.recycler.MultipleRecyclerAdapter;
 import mall.online.com.latte.ui.recycler.MultipleViewHolder;
+import me.yokeyword.fragmentation.SupportHelper;
 
 /**
  * Created by liWensheng on 2018/2/25.
@@ -92,9 +93,10 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
 
     private void switchContent(ContentDelegate delegate) {
         // 找到相应的子delegate
-        final LatteDelegate contentDelegate = DELEGATE.findChildFragment(ContentDelegate.class);
+        final LatteDelegate contentDelegate =
+                SupportHelper.findFragment(DELEGATE.getChildFragmentManager(), ContentDelegate.class);
         if (contentDelegate != null) { // 如果存在则切换
-            contentDelegate.replaceFragment(delegate, false);
+            contentDelegate.getSupportDelegate().replaceFragment(delegate, false);
         }
     }
 

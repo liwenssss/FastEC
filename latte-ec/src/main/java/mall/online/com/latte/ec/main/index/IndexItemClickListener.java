@@ -28,7 +28,7 @@ public class IndexItemClickListener extends SimpleClickListener {
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         final GoodsDetailDelegate delagate = GoodsDetailDelegate.create();
-        DELEGATE.start(delagate);
+        DELEGATE.getSupportDelegate().start(delagate);
     }
 
     @Override

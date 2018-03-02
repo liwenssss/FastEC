@@ -28,8 +28,8 @@ public class SortDelegate extends BottomItemDelagate {
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         final VerticalListDelegate listDelegate = new VerticalListDelegate();
-        loadRootFragment(R.id.vertical_list_container, listDelegate);
+        getSupportDelegate().loadRootFragment(R.id.vertical_list_container, listDelegate);
         // 设置右侧默认显示第一个分类
-        replaceLoadRootFragment(R.id.sort_content_container, ContentDelegate.newInstance(1), false);
+        getSupportDelegate().loadRootFragment(R.id.sort_content_container, ContentDelegate.newInstance(1));
     }
 }

@@ -36,7 +36,7 @@ public class UserProfileClickListener extends SimpleClickListener {
                 break;
             case 2:
                 final LatteDelegate nameDelegate = bean.getmDelegate();
-                DELEGATE.start(nameDelegate);
+                DELEGATE.getSupportDelegate().start(nameDelegate);
                 break;
             case 3:
                 getGenderDialog(new DialogInterface.OnClickListener() {
