@@ -10,12 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import mall.online.com.latte.delegate.bottom.BottomItemDelagate;
 import mall.online.com.latte.ec.R;
 import mall.online.com.latte.ec.R2;
 import mall.online.com.latte.ec.main.personal.list.ListAdapter;
 import mall.online.com.latte.ec.main.personal.list.ListBean;
 import mall.online.com.latte.ec.main.personal.list.ListItemType;
+import mall.online.com.latte.ec.main.personal.order.OrderListDelegate;
 
 /**
  * Created by liWensheng on 2018/3/2.
@@ -25,6 +27,52 @@ public class PersonalDelegate extends BottomItemDelagate{
 
     @BindView(R2.id.rv_personal_setting)
     RecyclerView mRvSettings = null;
+
+    public static final String ORDER_TYPE = "ORDER_TYPE";
+
+    private Bundle mArgs = null;
+
+    @OnClick(R2.id.tv_all_order)
+    void onClickAllOrder() {
+        mArgs.putString(ORDER_TYPE, "all");
+        startOrderListByType();
+    }
+
+    @OnClick(R2.id.ll_pay)
+    void onClickPay() {
+        mArgs.putString(ORDER_TYPE, "pay");
+        startOrderListByType();
+    }
+
+    @OnClick(R2.id.ll_receive)
+    void onClickReceive() {
+        mArgs.putString(ORDER_TYPE, "receive");
+        startOrderListByType();
+    }
+
+    @OnClick(R2.id.ll_evaluate)
+    void onClickEvaluate() {
+        mArgs.putString(ORDER_TYPE, "evaluate");
+        startOrderListByType();
+    }
+
+    @OnClick(R2.id.ll_after_market)
+    void onClickAfterMarket() {
+        mArgs.putString(ORDER_TYPE, "after");
+        startOrderListByType();
+    }
+
+    private void startOrderListByType() {
+        final OrderListDelegate delegate = new OrderListDelegate();
+        delegate.setArguments(mArgs);
+        getParentDelegate().start(delegate);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mArgs = new Bundle();
+    }
 
     @Override
     public Object setLayout() {
