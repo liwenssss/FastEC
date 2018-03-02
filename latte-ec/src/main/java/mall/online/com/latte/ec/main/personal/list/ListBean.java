@@ -13,7 +13,7 @@ import mall.online.com.latte.delegate.LatteDelegate;
 public class ListBean implements MultiItemEntity {
 
     private int mItemType = 0;
-    private String mStringUrl = null;
+    private String mImageUrl = null;
     private String mText = null;
     private String mValue = null;
     private int mId = 0;
@@ -22,7 +22,7 @@ public class ListBean implements MultiItemEntity {
 
     public ListBean(int mItemType, String mStringUrl, String mText,  String mValue, int mId, LatteDelegate mDelegate, CompoundButton.OnCheckedChangeListener mOnCheckedChangeListener) {
         this.mItemType = mItemType;
-        this.mStringUrl = mStringUrl;
+        this.mImageUrl = mStringUrl;
         this.mText = mText;
         this.mValue = mValue;
         this.mId = mId;
@@ -35,8 +35,8 @@ public class ListBean implements MultiItemEntity {
         return mItemType;
     }
 
-    public String getmStringUrl() {
-        return mStringUrl;
+    public String getmImageUrl() {
+        return mImageUrl;
     }
 
     public String getmText() {

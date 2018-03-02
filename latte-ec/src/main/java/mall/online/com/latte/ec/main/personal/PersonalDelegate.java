@@ -18,6 +18,7 @@ import mall.online.com.latte.ec.main.personal.list.ListAdapter;
 import mall.online.com.latte.ec.main.personal.list.ListBean;
 import mall.online.com.latte.ec.main.personal.list.ListItemType;
 import mall.online.com.latte.ec.main.personal.order.OrderListDelegate;
+import mall.online.com.latte.ec.main.personal.profile.UserProfileDelegate;
 
 /**
  * Created by liWensheng on 2018/3/2.
@@ -60,6 +61,11 @@ public class PersonalDelegate extends BottomItemDelagate{
     void onClickAfterMarket() {
         mArgs.putString(ORDER_TYPE, "after");
         startOrderListByType();
+    }
+
+    @OnClick(R2.id.img_user_avatar)
+    void onClickAvatar() {
+        getParentDelegate().start(new UserProfileDelegate());
     }
 
     private void startOrderListByType() {
