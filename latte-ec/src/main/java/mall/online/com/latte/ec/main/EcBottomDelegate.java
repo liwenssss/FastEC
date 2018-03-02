@@ -11,6 +11,7 @@ import mall.online.com.latte.delegate.bottom.ItemBuilder;
 import mall.online.com.latte.ec.main.cart.ShopCartDelegate;
 import mall.online.com.latte.ec.main.discover.DiscoverDelegate;
 import mall.online.com.latte.ec.main.index.IndexDelegate;
+import mall.online.com.latte.ec.main.personal.PersonalDelegate;
 import mall.online.com.latte.ec.main.sort.SortDelegate;
 
 /**
@@ -25,7 +26,7 @@ public class EcBottomDelegate extends BaseBottomDelegate {
         items.put(new BottomTabBean("{fa-sort}", "分类"), new SortDelegate());
         items.put(new BottomTabBean("{fa-compass}", "发现"), new DiscoverDelegate());
         items.put(new BottomTabBean("{fa-shopping-cart}", "购物车"), new ShopCartDelegate());
-        items.put(new BottomTabBean("{fa-user}", "我的"), new IndexDelegate());
+        items.put(new BottomTabBean("{fa-user}", "我的"), new PersonalDelegate());
         return builder.addItems(items).build();
     }
 

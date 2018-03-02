@@ -107,4 +107,7 @@ dependencies {
     provided "com.google.auto.value:auto-value:1.2"
     annotationProcessor "com.google.auto.value:auto-value:1.2"
 
+    //圆形图片
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+
 }

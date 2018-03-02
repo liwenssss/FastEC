@@ -93,13 +93,18 @@ public class ShopCartDelegate extends BottomItemDelagate implements ISuccess, IC
                 int entityPosition = deleteEntities.get(i).getField(MultipleFields.POSITION);
                 if (entityPosition < DataCount) {
                     mAdapter.remove(entityPosition);
+                    if (deleteEntities.get(i).getField(MultipleFields.IS_SELECTED)) {
+                        deleteEntities.get(i).setField(MultipleFields.IS_SELECTED, false);
+                    }
                     for (; entityPosition < DataCount - 1; entityPosition++) {
                         int pos = data.get(entityPosition).getField(MultipleFields.POSITION);
                         data.get(entityPosition).setField(MultipleFields.POSITION, pos-1);
                     }
                 }
             }
-//        mAdapter.notifyDataSetChanged();
+            mAdapter.clearTotal();
+            mAdapter.notifyDataSetChanged();
+            setTotalPrice();
             checkItemCount();
         }
     }

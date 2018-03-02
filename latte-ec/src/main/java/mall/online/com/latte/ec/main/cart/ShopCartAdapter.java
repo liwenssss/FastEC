@@ -132,12 +132,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
                             (ContextCompat.getColor(Latte.getApplicationContext(), R.color.colorGreen));
                     entity.setField(MultipleFields.IS_SELECTED, true);
 
-                    // 选中加价
-                    final int itemCount = entity.getField(MultipleFields.COUNT);
-                    final double itemPrice = entity.getField(MultipleFields.PRICE);
-                    final double itemTotal = itemCount * itemPrice;
-                    mTotalPrice += itemTotal;
-                    mCartItemListener.onItemClick(itemTotal);
+
                 } else {
                     iconIsSelected.setTextColor(Color.GRAY);
                     entity.setField(MultipleFields.IS_SELECTED, false);
