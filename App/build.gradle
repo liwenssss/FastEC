@@ -5,7 +5,7 @@ android {
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "mall.online.com.fastec.example"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -38,8 +38,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:27.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     testCompile 'junit:junit:4.12'
-    compile project(':latte-ec')
-    annotationProcessor project(':latte-compiler')
+    compile project(':Provider')
 
     //数据库查看工具
     compile 'com.facebook.stetho:stetho:1.4.2'

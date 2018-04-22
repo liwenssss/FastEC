@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_index"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingTop="23dp"
+        android:paddingBottom="8dp"
+        android:background="@color/item_background">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:orientation="horizontal"
+            >
+
+            <android.support.v7.widget.SearchView
+                android:id="@+id/et_search_view"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/search_selector"
+                />
+            <com.joanzapata.iconify.widget.IconTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:textColor="@color/dark_gray_text"
+                android:textSize="23sp"
+                android:text="{fa-commenting-o }"
+                />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <com.bigkoo.convenientbanner.ConvenientBanner
+        android:id="@+id/main_banner"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/main_rv_1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scrollbars="none"
+        />
+
+</LinearLayout>

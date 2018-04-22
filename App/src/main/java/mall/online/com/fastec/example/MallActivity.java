@@ -1,8 +1,10 @@
 package mall.online.com.fastec.example;
 
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import mall.online.com.latte.activities.ProxyActivity;
@@ -31,6 +33,9 @@ public class MallActivity extends ProxyActivity implements
         }
         Latte.getConfigurator().withActivity(this);
         StatusBarCompat.translucentStatusBar(this, true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            this.getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
     }
 
     @Override
@@ -41,22 +46,24 @@ public class MallActivity extends ProxyActivity implements
     @Override
     public void onSignInSuccess() {
         Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+        getSupportDelegate().start(new EcBottomDelegate());
     }
 
     @Override
     public void onSignUpSuccess() {
         Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
+        getSupportDelegate().start(new EcBottomDelegate());
     }
 
     @Override
     public void onLauncherFinish(OnLauncherFinishTag tag) {
         switch (tag) {
             case SIGNED:
-                Toast.makeText(this, "启动结束,用户登录", Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, "启动结束,用户登录", Toast.LENGTH_LONG).show();
                 getSupportDelegate().start(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
-                Toast.makeText(this, "启动结束,用户没登录", Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, "启动结束,用户没登录", Toast.LENGTH_LONG).show();
                 getSupportDelegate().start(new SignInDelegate());
                 break;
             default:
