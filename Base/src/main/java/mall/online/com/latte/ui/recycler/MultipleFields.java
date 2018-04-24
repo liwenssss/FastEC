@@ -20,7 +20,12 @@ public enum MultipleFields {
     IS_SELECTED,
     POSITION,
     TIME,
-    HIGH,
     ICON,
-    OBJECTID
+    OBJECTID,
+    USERPHONE,
+    PHONE,
+    DIQU,
+    XIANGXI,
+    IDS,
+    FLAG
 }

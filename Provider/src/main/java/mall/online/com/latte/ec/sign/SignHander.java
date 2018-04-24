@@ -6,8 +6,6 @@ import com.alibaba.fastjson.JSONObject;
 import org.greenrobot.greendao.annotation.Id;
 
 import mall.online.com.latte.app.AccountManager;
-import mall.online.com.latte.ec.database.DatabaseManager;
-import mall.online.com.latte.ec.database.UserProfile;
 import mall.online.com.latte.utils.storage.PreferenceUtils;
 
 /**

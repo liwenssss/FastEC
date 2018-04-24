@@ -14,6 +14,9 @@ import mall.online.com.latte.delegate.LatteDelegate;
 import mall.online.com.latte.ec.R;
 import mall.online.com.latte.ec.main.EcBottomDelegate;
 import mall.online.com.latte.ec.main.cart.order.OrderDelegate;
+import mall.online.com.latte.net.RestClient;
+import mall.online.com.latte.net.callback.ISuccess;
+import me.yokeyword.fragmentation.ISupportFragment;
 
 /**
  * Created by liWensheng on 2018/4/17.
@@ -25,18 +28,19 @@ public class FastPay implements View.OnClickListener {
     private Activity mActivity = null;
 
     private AlertDialog mDialog = null;
-    private int mOrderID = -1;
-
     private LatteDelegate DELEGATE = null;
+    private String mOrderID = "";
 
-    private FastPay(LatteDelegate delegate, LatteDelegate parentDelegate) {
+
+    private FastPay(LatteDelegate delegate, String id) {
+        this.DELEGATE = delegate;
         this.mActivity = delegate.getProxyActivity();
+        this.mOrderID = id;
         this.mDialog = new AlertDialog.Builder(delegate.getContext()).create();
-        this.DELEGATE = parentDelegate;
     }
 
-    public static FastPay create(LatteDelegate delegate, LatteDelegate parent) {
-        return new FastPay(delegate, parent);
+    public static FastPay create(LatteDelegate delegate, String orderid) {
+        return new FastPay(delegate, orderid);
     }
 
     public void beginPayDialog() {
@@ -66,7 +70,19 @@ public class FastPay implements View.OnClickListener {
         if (id == R.id.btn_dialog_pay_cancel) {
             mDialog.cancel();
         }else  {
-            DELEGATE.getSupportDelegate().start(new OrderDelegate());
+            mDialog.cancel();
+            RestClient.builder()
+                    .url("http://139.199.5.153:3000/ec/cart/delete?id="+mOrderID)
+                    .success(new ISuccess() {
+                        @Override
+                        public void onSuceess(String response) {
+                            Toast.makeText(mActivity.getApplicationContext(), "支付成功", Toast.LENGTH_SHORT).show();
+
+                            EcBottomDelegate ecBottomDelegate = EcBottomDelegate.create(2);
+                            DELEGATE.getSupportDelegate().start(ecBottomDelegate, 2);
+                        }
+                    }).build().post();
+
         }
     }
 }

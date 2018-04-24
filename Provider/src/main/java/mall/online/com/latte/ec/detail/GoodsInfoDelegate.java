@@ -1,5 +1,6 @@
 package mall.online.com.latte.ec.detail;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -51,6 +52,7 @@ public class GoodsInfoDelegate extends LatteDelegate {
         return delegate;
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         final String name = mData.getString("name");
@@ -58,6 +60,6 @@ public class GoodsInfoDelegate extends LatteDelegate {
         final double price = mData.getDouble("price");
         mGoodsInfoTitle.setText(name);
         mGoodsInfoDesc.setText(desc);
-        mGoodsInfoPrice.setText(String.valueOf(price));
+        mGoodsInfoPrice.setText(String.format("%.2f",price));
     }
 }

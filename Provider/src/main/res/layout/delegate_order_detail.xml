@@ -2,30 +2,27 @@
 <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/item_background"
+    android:background="@color/app_background"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_shop_cart"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@color/app_background"
+        android:layout_height="75dp"
+        android:background="@color/item_background"
         android:gravity="center">
 
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="订单列表"
+            android:text="订单详情"
             android:textColor="@color/wechat_black"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_order_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="3dp"
-        />
+        android:layout_height="match_parent" />
 
 </android.support.v7.widget.LinearLayoutCompat>

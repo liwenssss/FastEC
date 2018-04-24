@@ -11,8 +11,6 @@ import com.orhanobut.logger.Logger;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import mall.online.com.latte.delegate.web.event.Event;
-import mall.online.com.latte.delegate.web.event.EventManager;
 import okhttp3.Interceptor;
 
 /**
@@ -67,17 +65,6 @@ public class Configurator {
         return this;
     }
 
-    /**
-     * 添加event
-     * @param name
-     * @param event
-     * @return
-     */
-    public Configurator withWebEvent(String name, Event event) {
-        final EventManager manager = EventManager.getInstance();
-        manager.addEvent(name, event);
-        return this;
-    }
 
     /**
      * 添加JavaScript事件

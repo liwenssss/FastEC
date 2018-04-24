@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.joanzapata.iconify.widget.IconTextView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import mall.online.com.latte.app.Latte;
@@ -119,10 +120,11 @@ public class ShopCartAdapter extends IndexRecyclerAdapter {
                 final AppCompatImageView imageThumb = holder.getView(R.id.image_item_shop_cart);
                 final IconTextView iconIsSelected = holder.getView(R.id.icon_item_shop_cart);
 
+
                 // 赋值
                 tvTitle.setText(title);
                 tvDesc.setText(desc);
-                tvPrice.setText(String.valueOf(price));
+                tvPrice.setText(String.format("%.2f",price));
                 tvCount.setText(String.valueOf(count));
                 Glide.with(mContext)
                         .load(thumb)

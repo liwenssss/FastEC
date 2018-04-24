@@ -6,11 +6,8 @@ import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.webkit.URLUtil;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import mall.online.com.latte.delegate.LatteDelegate;
-import mall.online.com.latte.delegate.web.WebDelegate;
-import mall.online.com.latte.delegate.web.WebDelegateImpl;
 import mall.online.com.latte.utils.log.LogUtil;
 
 /**
@@ -31,19 +28,6 @@ public class Router {
         return Holder.INSTANCE;
     }
 
-    public final boolean handleWebUrl(WebDelegate delegate, String url) {
-        if (url.contains("tel:")) { // 如果是电话协议
-            callPhone(delegate.getContext(), url);
-            return true;
-        }
-
-        final LatteDelegate topDelegate = delegate.getTopDelegate();
-
-        final WebDelegateImpl webDelegate = WebDelegateImpl.create(url);
-        topDelegate.getSupportDelegate().start(webDelegate);
-
-        return true;
-    }
 
     private void loadWebPage(final WebView webView, final String url) {
         if (webView != null) {
@@ -68,9 +52,6 @@ public class Router {
         }
     }
 
-    public final void loadPage(WebDelegate delegate, String url) {
-        loadPage(delegate.getWebView(), url);
-    }
 
     /**
      * 电话协议执行

@@ -16,6 +16,8 @@ import mall.online.com.latte.ec.main.personal.PersonalDelegate;
 import mall.online.com.latte.net.RestClient;
 import mall.online.com.latte.net.callback.ISuccess;
 import mall.online.com.latte.ui.recycler.MultipleItemEntity;
+import mall.online.com.latte.utils.log.LogUtil;
+import mall.online.com.latte.utils.storage.PreferenceUtils;
 
 /**
  * Created by liWensheng on 2018/3/2.
@@ -50,19 +52,25 @@ public class OrderListDelegate extends LatteDelegate {
         super.onLazyInitView(savedInstanceState);
         RestClient.builder()
                 .loader(getContext())
-                .url("http://114.67.145.163/RestServer/data/order_list.json")
+                .url("http://139.199.5.153:3000/ec/orders?userphone=" + PreferenceUtils.getCustomAppProfile("current"))
                 .params("type", mType)
                 .success(new ISuccess() {
                     @Override
                     public void onSuceess(String response) {
+                        LogUtil.i("order", response);
                         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
+                        manager.setReverseLayout(true);
                         mRecyclerView.setLayoutManager(manager);
                         final List<MultipleItemEntity> data =
                                 new  OrderListDataConverter().setJsonData(response).convert();
-                        final OrderListAdapter adapter = new OrderListAdapter(data);
+                        final OrderListAdapter adapter = new OrderListAdapter(data, getDelegate());
                         mRecyclerView.setAdapter(adapter);
 
                     }
                 }).build().get();
+    }
+
+    private OrderListDelegate getDelegate() {
+        return this;
     }
 }

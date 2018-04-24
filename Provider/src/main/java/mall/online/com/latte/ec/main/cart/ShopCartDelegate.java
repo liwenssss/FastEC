@@ -1,5 +1,6 @@
 package mall.online.com.latte.ec.main.cart;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -149,15 +150,16 @@ public class ShopCartDelegate extends BottomItemDelagate implements ISuccess, IC
     @OnClick(R2.id.tv_shop_cart_pay)
     void onClickPay() {
         ArrayList<String> orders = new ArrayList<>();
+        double totalPrice = 0;
         if (mAdapter.getItemCount() != 0) {
             final List<MultipleItemEntity> data = mAdapter.getData();
 
-            List<MultipleItemEntity> deleteEntities = new ArrayList<>();
             for (MultipleItemEntity entity: data) {
                 final boolean isSelected = entity.getField(MultipleFields.IS_SELECTED);
                 if (isSelected) {
                     String cid = entity.getField(MultipleFields.OBJECTID);
                     orders.add(cid);
+                    totalPrice += (double)entity.getField(MultipleFields.PRICE);
                 }
             }
         }
@@ -165,20 +167,11 @@ public class ShopCartDelegate extends BottomItemDelagate implements ISuccess, IC
             Toast.makeText(getContext(), "您还未选择商品", Toast.LENGTH_SHORT).show();
         } else {
             EcBottomDelegate ecBottomDelegate = getParentDelegate();
-            OrderDelegate orderDelegate = OrderDelegate.create(orders);
+            OrderDelegate orderDelegate = OrderDelegate.create(orders, mAdapter.getTotalPrice(), ecBottomDelegate);
+            this.onPause();
             ecBottomDelegate.getSupportDelegate().start(orderDelegate);
         }
-//        FastPay.create(this, ecBottomDelegate).beginPayDialog();
     }
-
-    /**
-     * 创建订单
-     */
-    private void createOrder() {
-
-    }
-
-
 
     @Override
     public Object setLayout() {
@@ -187,10 +180,12 @@ public class ShopCartDelegate extends BottomItemDelagate implements ISuccess, IC
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+        LogUtil.i("where", "onBindView");
     }
 
     @Override
     public void onResume() {
+        LogUtil.i("where", "onResume");
         super.onResume();
         RestClient.builder()
                 .url("http://139.199.5.153:3000/ec/cart?phone="+ PreferenceUtils.getCustomAppProfile("current"))
@@ -198,10 +193,14 @@ public class ShopCartDelegate extends BottomItemDelagate implements ISuccess, IC
                 .success(this).build().get();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        LogUtil.i("where", "start");
+    }
 
     @Override
     public void onSuceess(String response) {
-        LogUtil.i("response", response);
         final ArrayList<MultipleItemEntity> data =
                 new ShopCartDateConverter().setJsonData(response).convert();
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
@@ -225,8 +224,27 @@ public class ShopCartDelegate extends BottomItemDelagate implements ISuccess, IC
         setTotalPrice();
     }
 
+    @SuppressLint("DefaultLocale")
     private void setTotalPrice() {
         final double price = mAdapter.getTotalPrice();
-        mTotalPrice.setText(String.valueOf(price));
+        mTotalPrice.setText(String.format("%.2f",price));
+    }
+
+    @Override
+    public void onNewBundle(Bundle args) {
+        super.onNewBundle(args);
+        this.onResume();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            LogUtil.i("where", "setUserVisibleHint VisibleToUser");
+            super.onResume();
+        }else {
+            LogUtil.i("where", "setUserVisibleHint not VisibleToUser");
+            super.onPause();
+        }
     }
 }

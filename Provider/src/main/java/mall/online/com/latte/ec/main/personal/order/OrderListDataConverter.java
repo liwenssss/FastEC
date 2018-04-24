@@ -22,19 +22,31 @@ public class OrderListDataConverter extends DataConverter {
         final int size = array.size();
         for (int i = 0; i < size; i++) {
             final JSONObject data = array.getJSONObject(i);
-            final int id = data.getInteger("id");
-            final String thumb = data.getString("thumb");
-            final String title = data.getString("title");
+            final String userphone = data.getString("userphone");
+            final String name = data.getString("name");
+            final String phone = data.getString("phone");
+            final String diqu = data.getString("diqu");
+            final String xiangxi = data.getString("xiangxi");
+            final String ids = data.getString("ids");
+            final int count = data.getInteger("count");
             final double price = data.getDouble("price");
             final String time = data.getString("time");
+            final boolean flag = data.getBoolean("flag");
+            final String objectId = data.getString("_id");
 
             final MultipleItemEntity entity = MultipleItemEntity.builder()
                     .setItemType(OrderListItemType.ITEM_ORDER_LIST)
-                    .setField(MultipleFields.ID, id)
-                    .setField(MultipleFields.IMAGE_URL, thumb)
-                    .setField(MultipleFields.TITLE, title)
+                    .setField(MultipleFields.USERPHONE, userphone)
+                    .setField(MultipleFields.NAME, name)
+                    .setField(MultipleFields.PHONE, phone)
+                    .setField(MultipleFields.DIQU, diqu)
+                    .setField(MultipleFields.XIANGXI, xiangxi)
+                    .setField(MultipleFields.IDS, ids)
+                    .setField(MultipleFields.COUNT, count)
                     .setField(MultipleFields.PRICE, price)
                     .setField(MultipleFields.TIME, time)
+                    .setField(MultipleFields.FLAG, flag)
+                    .setField(MultipleFields.OBJECTID, objectId)
                     .build();
 
             ENTITIES.add(entity);

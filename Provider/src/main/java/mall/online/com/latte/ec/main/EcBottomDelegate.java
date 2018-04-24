@@ -1,6 +1,8 @@
 package mall.online.com.latte.ec.main;
 
 import android.graphics.Color;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import java.util.LinkedHashMap;
 
@@ -12,12 +14,33 @@ import mall.online.com.latte.ec.main.cart.ShopCartDelegate;
 import mall.online.com.latte.ec.main.index.IndexDelegate;
 import mall.online.com.latte.ec.main.personal.PersonalDelegate;
 import mall.online.com.latte.ec.main.sort.SortDelegate;
+import mall.online.com.latte.utils.log.LogUtil;
 
 /**
  * Created by liWensheng on 2018/2/22.
  */
 
 public class EcBottomDelegate extends BaseBottomDelegate {
+    private int id = 0;
+    private static String ID ="ID";
+
+    public static EcBottomDelegate create(int rid) {
+        final Bundle args = new Bundle();
+        args.putInt(ID, rid);
+        final EcBottomDelegate delegate = new EcBottomDelegate();
+        delegate.setArguments(args);
+        return delegate;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        final Bundle args = getArguments();
+        if (args != null) {
+            id = args.getInt(ID);
+        }
+    }
+
     @Override
     public LinkedHashMap<BottomTabBean, BottomItemDelagate> setItems(ItemBuilder builder) {
         final LinkedHashMap<BottomTabBean, BottomItemDelagate> items = new LinkedHashMap<>();
@@ -30,7 +53,7 @@ public class EcBottomDelegate extends BaseBottomDelegate {
 
     @Override
     public int setIndexDelegate() {
-        return 0;
+        return id;
     }
 
     @Override
