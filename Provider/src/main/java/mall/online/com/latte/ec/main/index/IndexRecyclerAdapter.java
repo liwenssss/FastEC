@@ -25,6 +25,7 @@ import mall.online.com.latte.delegate.LatteDelegate;
 import mall.online.com.latte.ec.R2;
 import mall.online.com.latte.ec.detail.GoodsDetailDelegate;
 import mall.online.com.latte.ec.main.EcBottomDelegate;
+import mall.online.com.latte.ec.main.index.bar.Cloth.ClothDelegate;
 import mall.online.com.latte.ec.main.index.bar.MallDelegate;
 import mall.online.com.latte.ui.banner.BannerCreator;
 import mall.online.com.latte.ui.recycler.DataConverter;
@@ -160,10 +161,18 @@ public class IndexRecyclerAdapter
                 break;
             case ItemType.BAR:
                 LinearLayout mall =  holder.getView(R.id.rv_bar_mall);
+                LinearLayout cloth = holder.getView(R.id.rv_bar_fushi);
                 mall.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         DELEGATE.getSupportDelegate().start(new MallDelegate());
+                    }
+                });
+
+                cloth.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DELEGATE.getSupportDelegate().start(new ClothDelegate());
                     }
                 });
 

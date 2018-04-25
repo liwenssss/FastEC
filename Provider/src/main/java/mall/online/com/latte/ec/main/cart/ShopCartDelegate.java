@@ -180,12 +180,10 @@ public class ShopCartDelegate extends BottomItemDelagate implements ISuccess, IC
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-        LogUtil.i("where", "onBindView");
     }
 
     @Override
     public void onResume() {
-        LogUtil.i("where", "onResume");
         super.onResume();
         RestClient.builder()
                 .url("http://139.199.5.153:3000/ec/cart?phone="+ PreferenceUtils.getCustomAppProfile("current"))
@@ -196,7 +194,6 @@ public class ShopCartDelegate extends BottomItemDelagate implements ISuccess, IC
     @Override
     public void onStart() {
         super.onStart();
-        LogUtil.i("where", "start");
     }
 
     @Override

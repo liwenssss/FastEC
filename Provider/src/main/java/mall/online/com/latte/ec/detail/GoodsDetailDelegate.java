@@ -35,6 +35,7 @@ import mall.online.com.latte.net.RestClient;
 import mall.online.com.latte.net.callback.ISuccess;
 import mall.online.com.latte.ui.banner.HolderCreator;
 import mall.online.com.latte.ui.widget.CircleTextView;
+import mall.online.com.latte.utils.log.LogUtil;
 import mall.online.com.latte.utils.storage.PreferenceUtils;
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
@@ -158,6 +159,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
 
     private String getGoodsId(JSONObject data) {
         final String str = data.getString("id");
+        LogUtil.i("cart_id", str);
         return str;
     }
 
