@@ -59,6 +59,7 @@ public class OrderListDelegate extends LatteDelegate {
                     public void onSuceess(String response) {
                         LogUtil.i("order", response);
                         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
+                        manager.setStackFromEnd(true);
                         manager.setReverseLayout(true);
                         mRecyclerView.setLayoutManager(manager);
                         final List<MultipleItemEntity> data =

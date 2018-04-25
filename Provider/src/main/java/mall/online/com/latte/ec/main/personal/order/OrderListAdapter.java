@@ -74,7 +74,7 @@ public class OrderListAdapter extends IndexRecyclerAdapter {
                     arrayList.add(stringArray[i]);
                 }
 
-                if (flag && receive.getText().equals("确认收货")) {
+                if (!flag) {
                     receive.setTextColor(Color.parseColor("#00cc99"));
                     receive.setText("确认收货");
                     receive.setOnClickListener(new View.OnClickListener() {

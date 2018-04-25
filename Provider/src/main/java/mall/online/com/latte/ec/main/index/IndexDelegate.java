@@ -17,10 +17,12 @@ import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import mall.online.com.latte.delegate.bottom.BottomItemDelagate;
 import mall.online.com.latte.ec.R;
 import mall.online.com.latte.ec.R2;
 import mall.online.com.latte.ec.main.EcBottomDelegate;
+import mall.online.com.latte.ec.main.index.message.MessageDelegate;
 import mall.online.com.latte.ui.banner.BannerCreator;
 import mall.online.com.latte.ui.recycler.BaseDecoration;
 import retrofit2.http.DELETE;
@@ -69,6 +71,12 @@ public class IndexDelegate extends BottomItemDelagate {
         mRecyclerView.setLayoutManager(manager);
         // 添加分割线
         mRecyclerView.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 2));
+    }
+
+    @OnClick(R2.id.icon_mes)
+    public void getMes() {
+        EcBottomDelegate ecBottomDelegate = getParentDelegate();
+        ecBottomDelegate.getSupportDelegate().start(new MessageDelegate());
     }
 
     @Override
