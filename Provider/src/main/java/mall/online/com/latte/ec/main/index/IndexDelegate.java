@@ -27,6 +27,7 @@ import mall.online.com.latte.ec.R;
 import mall.online.com.latte.ec.R2;
 import mall.online.com.latte.ec.main.EcBottomDelegate;
 import mall.online.com.latte.ec.main.index.message.MessageDelegate;
+import mall.online.com.latte.ec.main.index.search.SearchDelegate;
 import mall.online.com.latte.ui.banner.BannerCreator;
 import mall.online.com.latte.ui.recycler.BaseDecoration;
 import retrofit2.http.DELETE;
@@ -102,7 +103,7 @@ public class IndexDelegate extends BottomItemDelagate implements View.OnFocusCha
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         if (hasFocus) {
-            
+            getParentDelegate().getSupportDelegate().start(new SearchDelegate());
         }
     }
 }

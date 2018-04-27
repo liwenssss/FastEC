@@ -35,6 +35,8 @@ public class ContentDelegate extends LatteDelegate {
     @BindView(R2.id.rv_list_content)
     RecyclerView mRecyclerView = null;
 
+    private LatteDelegate DELEGATE = null;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +46,12 @@ public class ContentDelegate extends LatteDelegate {
         }
     }
 
-    public static ContentDelegate newInstance(int contentId) {
+    public static ContentDelegate newInstance(int contentId, LatteDelegate latteDelegate) {
         final Bundle args = new Bundle();
         args.putInt(ARG_CONTENT_ID, contentId);
         final ContentDelegate delegate = new ContentDelegate();
         delegate.setArguments(args);
+        delegate.setDELEGATE(latteDelegate);
         return delegate;
     }
 
@@ -72,6 +75,8 @@ public class ContentDelegate extends LatteDelegate {
                                 R.layout.item_section_header,
                                 mData);
 
+                        sectionAdapter.setDELEGATE(getDelegate());
+
                         mRecyclerView.setAdapter(sectionAdapter);
                     }
                 }).build().get();
@@ -83,5 +88,13 @@ public class ContentDelegate extends LatteDelegate {
         final StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(manager);
         initData();
+    }
+
+    private void setDELEGATE(LatteDelegate latteDelegate) {
+        DELEGATE = latteDelegate;
+    }
+
+    private LatteDelegate getDelegate() {
+        return DELEGATE;
     }
 }

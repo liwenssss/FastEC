@@ -10,7 +10,10 @@ import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.List;
 
+import mall.online.com.latte.delegate.LatteDelegate;
 import mall.online.com.latte.ec.R;
+import mall.online.com.latte.ec.detail.GoodsDetailDelegate;
+import mall.online.com.latte.utils.log.LogUtil;
 
 /**
  * Created by liWensheng on 2018/2/26.
@@ -18,6 +21,11 @@ import mall.online.com.latte.ec.R;
 
 public class SectionAdapter extends BaseSectionQuickAdapter<SectionBean, BaseViewHolder>{
 
+    private static LatteDelegate DELEGATE = null;
+
+    public void setDELEGATE(LatteDelegate latteDelegate) {
+        DELEGATE = latteDelegate;
+    }
 
     public SectionAdapter(int layoutResId, int sectionHeadResId, List<SectionBean> data) {
         super(layoutResId, sectionHeadResId, data);
@@ -45,7 +53,9 @@ public class SectionAdapter extends BaseSectionQuickAdapter<SectionBean, BaseVie
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), goodsId, Toast.LENGTH_LONG).show();
+                LogUtil.i("contentid", goodsId);
+                GoodsDetailDelegate goodsDetailDelegate = GoodsDetailDelegate.create(goodsId);
+                DELEGATE.getSupportDelegate().start(goodsDetailDelegate);
             }
         });
 

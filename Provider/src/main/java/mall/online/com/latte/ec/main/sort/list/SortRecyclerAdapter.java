@@ -87,7 +87,7 @@ public class SortRecyclerAdapter extends IndexRecyclerAdapter {
      * 显示右侧内容
      */
     private void showContent(int contentId) {
-        final ContentDelegate delegate = ContentDelegate.newInstance(contentId);
+        final ContentDelegate delegate = ContentDelegate.newInstance(contentId, DELEGATE);
         switchContent(delegate);
     }
 

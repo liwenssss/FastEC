@@ -43,4 +43,5 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'liji.library.dev:citypickerview:3.1.6'
     compile 'com.chooseedittext:library:1.0.0'
+    compile 'com.blankj:utilcode:1.14.0'
 }
