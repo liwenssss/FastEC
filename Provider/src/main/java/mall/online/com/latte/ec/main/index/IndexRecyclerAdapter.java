@@ -2,15 +2,12 @@ package mall.online.com.latte.ec.main.index;
 
 import android.graphics.Typeface;
 import android.support.v7.widget.GridLayoutManager;
-import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
-import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
@@ -20,21 +17,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mall.online.com.latte.R;
-import mall.online.com.latte.app.Latte;
 import mall.online.com.latte.delegate.LatteDelegate;
-import mall.online.com.latte.ec.R2;
 import mall.online.com.latte.ec.detail.GoodsDetailDelegate;
-import mall.online.com.latte.ec.main.EcBottomDelegate;
 import mall.online.com.latte.ec.main.index.bar.Cloth.ClothDelegate;
-import mall.online.com.latte.ec.main.index.bar.MallDelegate;
+import mall.online.com.latte.ec.main.index.bar.Mall.MallDelegate;
 import mall.online.com.latte.ui.banner.BannerCreator;
 import mall.online.com.latte.ui.recycler.DataConverter;
 import mall.online.com.latte.ui.recycler.ItemType;
 import mall.online.com.latte.ui.recycler.MultipleFields;
 import mall.online.com.latte.ui.recycler.MultipleItemEntity;
 import mall.online.com.latte.ui.recycler.MultipleViewHolder;
-import mall.online.com.latte.utils.log.LogUtil;
-import retrofit2.http.DELETE;
 
 /**
  * Created by liWensheng on 2018/2/24.

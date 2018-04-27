@@ -111,7 +111,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
     }
 
     private void initPager(JSONObject data) {
-        final PagerAdapter adapter = new TabPagerAdapter(getFragmentManager(), data);
+        final PagerAdapter adapter = new TabPagerAdapter(getFragmentManager(), data, getGoodsId(data));
         mViewPager.setAdapter(adapter);
     }
 
@@ -159,7 +159,6 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
 
     private String getGoodsId(JSONObject data) {
         final String str = data.getString("id");
-        LogUtil.i("cart_id", str);
         return str;
     }
 

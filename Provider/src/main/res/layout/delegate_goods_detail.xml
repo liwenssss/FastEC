@@ -28,7 +28,7 @@
                     <com.bigkoo.convenientbanner.ConvenientBanner
                         android:id="@+id/detail_banner"
                         android:layout_width="match_parent"
-                        android:layout_height="300dp" />
+                        android:layout_height="250dp" />
 
                     <android.support.v7.widget.ContentFrameLayout
                         android:id="@+id/frame_goods_info"

@@ -15,6 +15,7 @@ import java.util.List;
 import mall.online.com.latte.delegate.LatteDelegate;
 import mall.online.com.latte.ec.R;
 import mall.online.com.latte.ec.main.cart.order.OrderDetailDelegate;
+import mall.online.com.latte.ec.main.personal.order.OrderListItemType;
 import mall.online.com.latte.net.RestClient;
 import mall.online.com.latte.net.callback.ISuccess;
 import mall.online.com.latte.ui.recycler.MultipleFields;
@@ -74,7 +75,7 @@ public class OrderListAdapter extends IndexRecyclerAdapter {
                     arrayList.add(stringArray[i]);
                 }
 
-                if (!flag) {
+                if (flag) {
                     receive.setTextColor(Color.parseColor("#00cc99"));
                     receive.setText("确认收货");
                     receive.setOnClickListener(new View.OnClickListener() {

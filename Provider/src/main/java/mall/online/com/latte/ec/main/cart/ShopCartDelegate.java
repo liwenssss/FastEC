@@ -67,7 +67,7 @@ public class ShopCartDelegate extends BottomItemDelagate implements ISuccess, IC
                 final boolean isSelected = entity.getField(MultipleFields.IS_SELECTED);
                 if (isSelected) {
                     String cid = entity.getField(MultipleFields.OBJECTID);
-                    id = id + cid + "|";
+                    id = id + cid + ",";
                     deleteEntities.add(entity);
                 }
             }
@@ -230,7 +230,6 @@ public class ShopCartDelegate extends BottomItemDelagate implements ISuccess, IC
     @Override
     public void onNewBundle(Bundle args) {
         super.onNewBundle(args);
-        this.onResume();
     }
 
     @Override

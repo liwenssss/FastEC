@@ -27,5 +27,6 @@ public enum MultipleFields {
     DIQU,
     XIANGXI,
     IDS,
-    FLAG
+    FLAG,
+    AFTER
 }

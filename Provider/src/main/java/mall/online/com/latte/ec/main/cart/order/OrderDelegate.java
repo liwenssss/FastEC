@@ -139,12 +139,12 @@ public class OrderDelegate extends LatteDelegate {
         String id = "";
         final int size = orders.size();
         for (int i = 0; i < size; i++) {
-            id = id + orders.get(i)+ "|";
+            id = id + orders.get(i)+ ",";
         }
 
         createOrder();
 
-//        FastPay.create(this, id).beginPayDialog();
+//        AfterWay.create(this, id).beginPayDialog();
         RestClient.builder()
                 .url("http://139.199.5.153:3000/ec/cart/delete?id="+ id)
                 .success(new ISuccess() {
@@ -161,14 +161,18 @@ public class OrderDelegate extends LatteDelegate {
     @Override
     public void onNewBundle(Bundle args) {
         super.onNewBundle(args);
+        this.onResume();
     }
 
     private void createOrder() {
         String id = "";
         final int size = orders.size();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size-1; i++) {
             id = id + orders.get(i)+ ",";
         }
+        id = id + orders.get(size-1);
+
+        LogUtil.i("id", id);
 
         Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("MM月dd日 HH时mm分");
@@ -201,6 +205,16 @@ public class OrderDelegate extends LatteDelegate {
                     @Override
                     public void onSuceess(String response) {
                         LogUtil.i("订单", "订单添加成");
+                    }
+                }).build().post();
+
+        RestClient.builder()
+                .loader(getContext())
+                .url("http://139.199.5.153:3000/ec/after?id="+id + "&time=" + date)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuceess(String response) {
+                        LogUtil.i("售后信息", "售后信息添加成功");
                     }
                 }).build().post();
     }

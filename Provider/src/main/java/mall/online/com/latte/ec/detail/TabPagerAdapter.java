@@ -10,6 +10,9 @@ import com.alibaba.fastjson.JSONObject;
 
 import java.util.ArrayList;
 
+import mall.online.com.latte.ec.detail.comment.CommentInfoDelegate;
+import mall.online.com.latte.utils.log.LogUtil;
+
 /**
  * Created by liWensheng on 2018/4/6.
  */
@@ -18,7 +21,9 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
     private final ArrayList<String> TAB_TITLES = new ArrayList<>();
     private final ArrayList<ArrayList<String>> PICTURES = new ArrayList<>();
 
-    public TabPagerAdapter(FragmentManager fm, JSONObject data) {
+    private String mGoodsId = "";
+
+    public TabPagerAdapter(FragmentManager fm, JSONObject data, String id) {
         super(fm);
         //获取tabs信息，注意，这里的tabs是一条信息
         final JSONArray tabs = data.getJSONArray("tabs");
@@ -36,6 +41,8 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
             TAB_TITLES.add(name);
             PICTURES.add(eachTabPicturesArray);
         }
+        TAB_TITLES.add("评价");
+        mGoodsId = id;
     }
 
     @Override
@@ -44,6 +51,9 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
             return ImageDelegate.create(PICTURES.get(0));
         } else if (position == 1) {
             return ImageDelegate.create(PICTURES.get(1));
+        } else if (position == 2) {
+            LogUtil.i("goodsid", mGoodsId);
+            return CommentInfoDelegate.create(mGoodsId);
         }
         return null;
     }

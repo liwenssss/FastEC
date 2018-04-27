@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/item_background"
@@ -13,12 +14,14 @@
         android:gravity="center">
 
         <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="订单列表"
             android:textColor="@color/wechat_black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
     </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView

@@ -10,9 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
+import com.library.ChooseEditText;
+import com.library.OnChooseEditTextListener;
 
 import java.util.ArrayList;
 
@@ -31,7 +35,7 @@ import retrofit2.http.DELETE;
  * Created by liWensheng on 2018/2/22.
  */
 
-public class IndexDelegate extends BottomItemDelagate {
+public class IndexDelegate extends BottomItemDelagate implements View.OnFocusChangeListener {
 
     @BindView(R2.id.rv_index)
     RecyclerView mRecyclerView = null;
@@ -40,7 +44,7 @@ public class IndexDelegate extends BottomItemDelagate {
     @BindView(R2.id.tb_index)
     Toolbar mToolbar = null;
     @BindView(R2.id.et_search_view)
-    SearchView mSearchView = null;
+    EditText mSearchView = null;
 
 
 
@@ -50,7 +54,7 @@ public class IndexDelegate extends BottomItemDelagate {
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
         mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConverter(), ecBottomDelegate);
-        mSearchView.setQueryHint("搜索");
+        mSearchView.setOnFocusChangeListener(this);
     }
 
     private void initRefreshLayout() {
@@ -95,4 +99,10 @@ public class IndexDelegate extends BottomItemDelagate {
     }
 
 
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus) {
+            
+        }
+    }
 }

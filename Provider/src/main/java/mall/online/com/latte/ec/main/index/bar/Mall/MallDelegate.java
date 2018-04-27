@@ -1,4 +1,4 @@
-package mall.online.com.latte.ec.main.index.bar;
+package mall.online.com.latte.ec.main.index.bar.Mall;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
